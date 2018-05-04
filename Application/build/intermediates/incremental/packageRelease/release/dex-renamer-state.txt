@@ -1,0 +1,4 @@
+#Fri Apr 06 18:17:04 IST 2018
+base.0=C\:\\Users\\rutjadha\\Desktop\\BLEGATT-FINAL\\android-BluetoothLeGatt-master\\android-BluetoothLeGatt-master\\Application\\build\\intermediates\\transforms\\dex\\release\\0
+path.0=classes.dex
+renamed.0=classes.dex

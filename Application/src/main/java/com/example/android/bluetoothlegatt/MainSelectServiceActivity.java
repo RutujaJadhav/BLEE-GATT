@@ -17,6 +17,9 @@ public class MainSelectServiceActivity extends Activity {
     Switch wifimqtt,LORA;
     EditText SSID,PASSWORD,MQTTSERVER,MQTTPORT,APPKEY,APPSESSIONKEY;
 
+    public static String getVartosend="";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +40,8 @@ public class MainSelectServiceActivity extends Activity {
         APPKEY.setVisibility(View.VISIBLE);
         APPSESSIONKEY.setVisibility(View.VISIBLE);
 
+        getVartosend="fipy;1;0;0;1;0;0;0;0";
 
-        Log.w(TAG,"Value to be sent for lora");
-        Log.w(TAG, String.valueOf(globalvars.getVartosend));
     }
 
     public void wifimqttServices(View view) {
@@ -48,12 +50,17 @@ public class MainSelectServiceActivity extends Activity {
         PASSWORD.setVisibility(View.VISIBLE);
         MQTTSERVER.setVisibility(View.VISIBLE);
         MQTTPORT.setVisibility( View.VISIBLE);
+
+
+
+        getVartosend="fipy;1;1;1;0";
+
     }
 
     public void toSensors(View view) {
 
-        String ssid_send,password_send,mqttserver_send,mqttport_send;
         String appkey_send, appsessionkey_send;
+        String ssid_send,password_send,mqttserver_send,mqttport_send;
 
         ssid_send=SSID.getText().toString();
         password_send=PASSWORD.getText().toString();
@@ -62,27 +69,27 @@ public class MainSelectServiceActivity extends Activity {
 
         appkey_send=APPKEY.getText().toString();
         appsessionkey_send=APPSESSIONKEY.getText().toString();
-
-        if (appkey_send!=null){
-            globalvars.getVartosend=globalvars.getVartosend+";0;0;1;0;0;0;0";
-
-            globalvars.getVartosend=globalvars.getVartosend+";"+appkey_send;
-            globalvars.getVartosend=globalvars.getVartosend+";"+appsessionkey_send;
-            Log.d(TAG,"string to be sent");
-            // int w = Log.w((globalvars.getVartosend));
+        if (getVartosend=="fipy;1;0;0;1;0;0;0;0")
+        {
+            getVartosend=getVartosend+";"+appkey_send;
+            getVartosend=getVartosend+";"+appsessionkey_send;
         }
 
-         if (ssid_send!=null){
-             globalvars.getVartosend=globalvars.getVartosend+";1;1;0";
+        else if (getVartosend=="fipy;1;1;1;0")
+        {
+            getVartosend=getVartosend+";"+ssid_send;
+            getVartosend=getVartosend+";"+password_send;
+            getVartosend=getVartosend+";"+mqttserver_send;
+            getVartosend=getVartosend+";"+mqttport_send+";0;0";
 
-            globalvars.getVartosend=globalvars.getVartosend+";"+ssid_send;
-            globalvars.getVartosend=globalvars.getVartosend+";"+password_send;
-            globalvars.getVartosend=globalvars.getVartosend+";"+mqttserver_send;
-            globalvars.getVartosend=globalvars.getVartosend+";"+mqttport_send+";0;0";
         }
+
+
+
+
 
         Log.w(TAG,"Value to be sent");
-        Log.w(TAG, String.valueOf(globalvars.getVartosend));
+        Log.w(TAG, String.valueOf(getVartosend));
 
         Intent intent = new Intent(getApplicationContext(), SelectSensorsActivity.class);
         startActivity(intent);

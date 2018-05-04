@@ -32,9 +32,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="227dp"
-        android:onClick="acctosend"
-        android:text="Accelerometer" />
+        android:layout_marginBottom="215dp"
+        android:text="Accelerometer"
+        android:onClick="acctosend"/>
 
     <Switch
         android:id="@+id/light"
@@ -42,9 +42,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="154dp"
-        android:onClick="lighttosend"
-        android:text="Light" />
+        android:layout_marginBottom="130dp"
+        android:text="Light"
+        android:onClick="lighttosend"/>
 
     <EditText
         android:id="@+id/temp_freq"

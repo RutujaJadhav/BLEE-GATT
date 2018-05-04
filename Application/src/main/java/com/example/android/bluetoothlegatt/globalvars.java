@@ -11,7 +11,6 @@ public class globalvars {
     DeviceControlActivity DCA= new DeviceControlActivity();
 
 
-    static String getVartosend="";
 
    // static String getVartosend_service="";
 
@@ -25,7 +24,7 @@ public class globalvars {
 
 
     public static void clearstring(){
-        getVartosend="";
+
 
 
         Log.w(TAG,"Clearing string");

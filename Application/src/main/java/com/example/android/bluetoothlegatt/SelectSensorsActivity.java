@@ -73,47 +73,48 @@ public class SelectSensorsActivity extends Activity{
         f_light=freq_light.getText().toString();
 
 
-        if (f_temp!=null){
-            globalvars.getVartosend=globalvars.getVartosend+";"+f_temp;
-        }
-        else {globalvars.getVartosend=globalvars.getVartosend+";0";}
+        if (!f_temp.matches("")){
 
-        if (f_alt!=null){
-            globalvars.getVartosend=globalvars.getVartosend+";"+f_alt;
+            MainSelectServiceActivity.getVartosend=MainSelectServiceActivity.getVartosend+";"+f_temp;
         }
-        else {globalvars.getVartosend=globalvars.getVartosend+";0";}
+        else {MainSelectServiceActivity.getVartosend=MainSelectServiceActivity.getVartosend+";0";}
 
-        if (f_acc!=null){
-            globalvars.getVartosend=globalvars.getVartosend+";"+f_acc;
+        if (!f_alt.matches("")){
+            MainSelectServiceActivity.getVartosend=MainSelectServiceActivity.getVartosend+";"+f_alt;
         }
-        else {globalvars.getVartosend=globalvars.getVartosend+";0";}
+        else {MainSelectServiceActivity.getVartosend=MainSelectServiceActivity.getVartosend+";0";}
 
-        if (f_light!=null){
-            globalvars.getVartosend=globalvars.getVartosend+";"+f_light+">e";
+        if (!f_acc.matches("")){
+            MainSelectServiceActivity.getVartosend=MainSelectServiceActivity.getVartosend+";"+f_acc;
         }
-        else {globalvars.getVartosend=globalvars.getVartosend+";0"+">e";}
+        else {MainSelectServiceActivity.getVartosend=MainSelectServiceActivity.getVartosend+";0";}
+
+        if (!f_light.matches("")){
+            MainSelectServiceActivity.getVartosend=MainSelectServiceActivity.getVartosend+";"+f_light+">e";
+        }
+        else {MainSelectServiceActivity.getVartosend=MainSelectServiceActivity.getVartosend+";0"+">e";}
 
 
         Log.w(TAG,"THE LENGTH OF STRING IS");
-        int length=globalvars.getVartosend.length();
+        int length=MainSelectServiceActivity.getVartosend.length();
         Log.w(TAG, valueOf(length));
 
         modval=length%10;
         Log.w(TAG,"FINAL STRING TO SEND");
-        Log.w(TAG,globalvars.getVartosend);
+        Log.w(TAG,MainSelectServiceActivity.getVartosend);
 
         int end=0;
         for ( j=0;j<length;j=j+10) {
             end = Math.min(j+10, length);
             if (j==0) {
-                globalvars.finalvartosend=globalvars.getVartosend.substring(0,10);
+                globalvars.finalvartosend=MainSelectServiceActivity.getVartosend.substring(0,10);
                 mBluetoothLeService.writeToCharacteristic();
 
             }
             else {
 
 
-            strstosend.add(globalvars.getVartosend.substring(j,end));
+            strstosend.add(MainSelectServiceActivity.getVartosend.substring(j,end));
             Log.w(TAG,"STRING IN PIECES");
             Log.w(TAG,globalvars.finalvartosend);
           //  mBluetoothLeService.writeToCharacteristic();
